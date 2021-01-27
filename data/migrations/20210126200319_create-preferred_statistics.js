@@ -1,6 +1,6 @@
 exports.up = function (knex) {
   return knex.schema.createTable('preferred_statistics', (tbl) => {
-    tbl.string('okta_email').notNullable();
+    tbl.string('email').notNullable();
     tbl
       .integer('stat_id')
       .references('id')
