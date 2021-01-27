@@ -48,6 +48,14 @@ const findOrCreateProfile = async (profileObj) => {
   }
 };
 
+const addPreferredStatistic = async (email, id) => {
+  return db('preferred_statistics').insert({ email, id }).returning('*');
+};
+
+const removePreferredStatistic = async (email, id) => {
+  return db('preferred_statistics').where({ email, id }).del();
+};
+
 module.exports = {
   findAll,
   findBy,
