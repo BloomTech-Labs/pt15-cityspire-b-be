@@ -4,12 +4,12 @@ const getFavoritesByEmail = async (email) => {
   return db('favorites').where({ email });
 };
 
-const addFavorite = async (email, zip_code) => {
-  return db('favorites').insert({ email, zip_code }).returning('*');
+const addFavorite = async (favorite) => {
+  return db('favorites').insert(favorite).returning('*');
 };
 
-const removeFavorite = async (email, zip_code) => {
-  return db('favorites').where({ email, zip_code }).del();
+const removeFavorite = async (email, id) => {
+  return db('favorites').where({ email, id }).del().returning();
 };
 
 module.exports = {
