@@ -46,3 +46,5 @@ router.delete('/:email/:id', (req, res) => {
     res.status(204).end();
   }
 });
+
+module.exports = router;
