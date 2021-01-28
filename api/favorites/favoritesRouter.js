@@ -19,3 +19,18 @@ router.get('/:email', async (req, res) => {
   });
   res.status(200).send(favorites);
 });
+router.post('/:email', async (req, res) => {
+  const { email } = req.params;
+  const { city, state, zip } = req.body;
+  let favorite;
+  if (!zip && !city && !state) {
+    res.status(400).send({ message: 'missing zip code, city, or state' });
+  } else {
+    if (zip) {
+      favorite = db.addFavorite({ email, zip });
+    } else if (city && state) {
+      favorite = db.addFavorite({ email, city, state });
+    }
+    res.status(201).send(favorite);
+  }
+});
