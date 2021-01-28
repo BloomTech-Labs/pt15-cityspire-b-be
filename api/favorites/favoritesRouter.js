@@ -34,3 +34,15 @@ router.post('/:email', async (req, res) => {
     res.status(201).send(favorite);
   }
 });
+
+router.delete('/:email/:id', (req, res) => {
+  const { email, id } = req.params;
+  const count = db.removeFavorite(email, id);
+  if (count == 0) {
+    res.status(404).send({
+      message: 'cannot find a favorite with that id belonging to this user',
+    });
+  } else {
+    res.status(204).end();
+  }
+});
