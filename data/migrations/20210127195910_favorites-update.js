@@ -9,5 +9,9 @@ exports.up = function (knex) {
 };
 
 exports.down = function (knex) {
-  return knex.schema.dropTable('favorites');
+  return knex.schema.dropTable('favorites').createTable('favorites', (tbl) => {
+    tbl.integer('email');
+    tbl.integer('zip_code').notNullable();
+    tbl.primary(['email', 'zip_code']);
+  });
 };
