@@ -49,6 +49,7 @@
     ]
   },
   "dependencies": {
+    "@mapbox/mapbox-sdk": "^0.12.1",
     "@okta/jwt-verifier": "^1.0.1",
     "axios": "^0.21.1",
     "cookie-parser": "~1.4.4",
