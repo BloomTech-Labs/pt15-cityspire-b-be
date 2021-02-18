@@ -6,7 +6,30 @@ const baseClient = mapboxClient({
   accessToken: process.env.MAPBOX_ACCESS_TOKEN,
 });
 const geocodeService = mapboxGeocode(baseClient);
-
+/**
+ * @swagger
+ * /:
+ *  get:
+ *    description: reverse geocoding
+ *    tags:
+ *      - reverse
+ *      - geocode
+ *    produces:
+ *      - applicaiton/json
+ *    responses:
+ *      200:
+ *        description: Returns an array containing city, state, and zip code
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: Object
+ *              required:
+ *                - features
+ *              properties:
+ *                features:
+ *                  type: Array
+ *                  example: [{bbox, center, context, geometry, id, place_name, place_type, properties, relevance, text, type}]
+ */
 router.get('/reverse', async (req, res) => {
   try {
     console.log(process.env.MAPBOX_ACCESS_TOKEN);
