@@ -24,6 +24,7 @@ const profileRouter = require('./profile/profileRouter');
 const dsRouter = require('./dsService/dsRouter');
 const favoritesRouter = require('./favorites/favoritesRouter');
 const geocodeRouter = require('./geocode/geocodeRouter');
+const metricsRouter = require('./metrics/metricsRouter');
 
 const app = express();
 
@@ -55,6 +56,7 @@ app.use(['/profile', '/profiles'], profileRouter);
 app.use('/data', dsRouter);
 app.use('/favorites', favoritesRouter);
 app.use('/geocode', geocodeRouter);
+app.use('/metrics', metricsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
